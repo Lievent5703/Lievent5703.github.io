@@ -46,7 +46,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">John Doe</a></h1>
+		  <h1 class="header-author"><a href="/">Lievent</a></h1>
 		</hgroup>
 		
 
@@ -104,7 +104,7 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">John Doe</h1>
+			  <h1 class="header-author js-header-author">Lievent</h1>
 			</hgroup>
 			
 			
@@ -152,27 +152,86 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-实验文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-ipv6" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/16/实验文章/">实验文章</a>
+      <a class="article-title" href="/2020/02/10/ipv6/">ipv6</a>
     </h1>
   
 
         
-        <a href="/2019/07/16/实验文章/" class="archive-article-date">
-  	<time datetime="2019-07-16T10:31:03.779Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-16</time>
+        <a href="/2020/02/10/ipv6/" class="archive-article-date">
+  	<time datetime="2020-02-09T20:11:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>这里什么都没有<br>date: 2019-07-16 18:31:03<br>tags:</p>
+        <p>本次需要的前置科技如下：</p>
+<p>#####1、byrbt账号（没有账号你怎么登录）</p>
+<p>#####2、非三大运营商的ipv6网络（byrbt属于pt站，不向外公开，所以屏蔽了国内三大运营商的ipv6网络）</p>
+<p>  #####2.1、为了使用其他运营商或教育网的ipv6，你需要一个网络隧道来连接到其他网络，使站点认为你是从它允许的地址范围内进来的。方法有很多，我这里只介绍下面的这个方法，为此需要3、4、5条。</p>
+<p>#####3、ipv4的公网ip（非固定的也可以，就是多一些操作，没有你就洗洗睡吧，或者考虑其他的方法，本教程不适用）</p>
+<p>#####4、HE的账号<a href="https://tunnelbroker.net/" target="_blank" rel="noopener">https://tunnelbroker.net/</a>（用来建立6in4隧道，获得美国he提供的ipv6网络服务。ps：没有被墙真是太好了）</p>
+<p>#####5、一台可以配置6in4隧道和路由规则的路由器（本次教程推荐使用openwrt系统，并用koolshare论坛的LEDE系统【版本为Openwrt X64 V2.33】作为示例。路由器刷机和其他系统使用请出门左转找恩山论坛或koolshare论坛学习，不然我写不完了）</p>
+<p>—————————关于公网ip———————————</p>
+<p>请在你打算接入ipv6的设备上打开<a href="https://test-ipv6.com/" title="https://test-ipv6.com/" target="_blank" rel="noopener">https://test-ipv6.com/</a>，可以看到这台机器现在所属的ipv4公网地址，如下图</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-ed5ecde2feb012e7?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>然后登陆你的路由器查看路由器端获取的ipv4地址</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-5cee272ee1944859?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>如果二者一直，那么恭喜你，可以参照本教程尝试了。<br>不一致的话，就洗洗睡吧，或者尝试打电话给你的网络供应商索要公网ip，或尝试其他方法上byrbt。</p>
+<p>—————————我是看不见的分隔线—————————</p>
+<p>好了，下面开始教程：</p>
+<p>#一、注册byrbt账号<br>如果你有账号，那么可以跳过此步。如果没有，你需要注册一个。（注册账号也需要连接到byrbt站的ipv6地址，可以尝试使用学校提供的连回校园网的网络服务，或者各显神通。或者在完成下面的几步教程后再回头来看这里）<br>如果你是大学学生，首先打开注册页面<a href="https://bt.byr.cn/collegeinvite.php" title="https://bt.byr.cn/collegeinvite.php" target="_blank" rel="noopener">https://bt.byr.cn/collegeinvite.php</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-0c85e3893d7cb60e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>按照图中所示申请邀请码注册</p>
+<p>华电的学校邮箱为：学号@ncepu.edu.cn<br>密码默认是身份证后8位，建议登陆后尽快修改密码以确保安全<br>校内邮箱地址<a href="https://mail.ncepu.edu.cn/" target="_blank" rel="noopener">https://mail.ncepu.edu.cn/</a></p>
+<p>注册后请阅读“规则”“常见问题”版面，以免犯规被封</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-4223635e632c93a4?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt> </p>
+<p><strong>北邮人BT新手群 205937312(已满) 北邮人萌新群 965668083</strong>  </p>
+<p>#二、注册HE账户以及配置6in4隧道</p>
+<p>（参考自<a href="http://koolshare.cn/forum.php?mod=viewthread&tid=97277&extra=page%3D1%26filter%3Dtypeid%26typeid%3D107" target="_blank" rel="noopener">http://koolshare.cn/forum.php?mod=viewthread&amp;tid=97277&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D107</a>）</p>
+<p>###1、<br>Hurricane Electric是一家位于美国的全球互联网服务提供商。首先打开HE注册页面<a href="https://tunnelbroker.net/register.php" target="_blank" rel="noopener">https://tunnelbroker.net/register.php</a>，注册信息除了自己的邮箱和id密码外可使用虚假信息生成<a href="https://www.fakenamegenerator.com/" target="_blank" rel="noopener">https://www.fakenamegenerator.com/</a></p>
+<p>注册登录后选择”创建常规隧道”</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-d16338d783dbe63f?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-8f13271846c3d0fe?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt> </p>
+<p>在上方的ipv4地址栏中填入你目前的公网ip，然后选择一个服务器</p>
+<p>选择服务器 IP 前建议使用 ping 命令测试下线路 IP 是否不丢包、是否稳定（不会 ping <a href="http://zh.wikihow.com/%E5%AF%B9IP%E5%9C%B0%E5%9D%80%E8%BF%9B%E8%A1%8CPing%E6%B5%8B%E8%AF%95" target="_blank" rel="noopener">点这里</a>学习）。优秀的线路通常具备，小于 300ms 的延时，没有丢包，延时稳定、起伏不大。  </p>
+<p>中国大陆一般选洛杉矶的服务器比较快，（现在居然满了、、2020/2/10）</p>
+<p>###2、<br>创建好后在隧道信息列表点开这里</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-64148f6459803145?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> 选择openwrt barrier breaker，将文本内容复制到本地文本文档保存备用，以及高级选项中的updatekey保存备用</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-194e29e726f32ac5?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-bb6468236c2769c2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> #三、配置路由器</p>
+<p>###1、打开openwrt官方6in4配置指南<br><a href="https://openwrt.org/docs/guide-user/network/ipv6_ipv4_transitioning" target="_blank" rel="noopener">https://openwrt.org/docs/guide-user/network/ipv6_ipv4_transitioning</a><br>再新建一个本地文本文档，将下图中“config router6”和“config interface wan6”中文本复制下来备用（“#”号后所示的文字为注释，不必复制）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-85564f1af0c2f773?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt> 再将下面防火墙相关的配置也保存备用<br><img src="https://upload-images.jianshu.io/upload_images/10763120-2170232be9df0c2e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###2、<br>将这个文本中的绿框部分参照之前配置隧道时所获取的信息（第一次让保存备用的那个）修改，<br>其中mtu为1480，<br>password和updatekey均为之前所复制备用的那一个16位英文密码，<br>ipv6路由为的源为”xxx:xxxx:xxxx::”目标为“XXXX:XXXX::2/0”类似这样 </p>
+<p>###3、<br>修改完毕保存后登录路由器控制页面，依次打开“网络–接口–接口”，删除原来的wan6配置</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-9d3e0915a1d63dd1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>再将WAN配置中的ipv6配置关闭，和“接口–全局网络选项”中的ipv6 ula前缀清空，保存并应用</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-535ca254e24ab652?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-c8d3b8de3af79914?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt> 4、在路由器控制界面依次打开“系统–进阶设置–配置网络”</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-e0722ed068dfc003?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt> </p>
+<p>在其最下方新增“config interface ‘henet’”和“config route6”两个配置，样例如下，具体内容为之前保存备用修改后的文本，直接复制粘贴即可，注意空格和英文单引号’别丢了。然后保存并应用。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-114ef683dad42ed1?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###5、防火墙设置<br>在“网络–接口”中将新增的henet配置中的防火墙区域调整为wan区</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-1d672fb1d68a499b?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> 然后打开“系统–进阶设置–配置防火墙”<br><img src="https://upload-images.jianshu.io/upload_images/10763120-14e06561cbd2fc86?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>将之前保存的防火墙配置粘贴在最下方，保存并应用<br><img src="https://upload-images.jianshu.io/upload_images/10763120-e0a0acc73cf200ae?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>#四、测试ipv6网络</p>
+<p>此时打开<a href="https://test-ipv6.com/" title="https://test-ipv6.com/" target="_blank" rel="noopener">https://test-ipv6.com/</a>，如果可以正常使用，则配置无误，可以愉快地玩耍了。</p>
+<p>###1、如果不能正常使用，请先检查电脑的ipv6协议是否开启</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/10763120-efae0f10d8a0533e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###2、还无法获取ipv6<br>尝试重启路由器，然后在<a href="https://tunnelbroker.net/tunnel_detail.php" target="_blank" rel="noopener">https://tunnelbroker.net/tunnel_detail.php</a>中更新本地公网ip地址<br><img src="https://upload-images.jianshu.io/upload_images/10763120-8b3e3f48a676378a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p>###3、如果还不行，那问题就比较琐碎，我先不一一列举了，日后再补。</p>
+<p>#五、缺点<br>此方法需要在公网ip发生变化后登陆HE隧道配置页面进行配置，那么如何使他可以自动配置呢？有一种简单的方法，就是利用ddns（动态dns）服务，使你每一次的公网ip发生变化后都自动同步到HE隧道中。其中ddns服务有很多供应商，比如阿里、花生壳、he等等，国内的网络服务提供商也提供免费的ddns，但是国内出于安全考虑，需要提供身份证、手机号等信息才可以使用。这里也可以使用任意一家的ddns服务提供商，在获得hostname和apikey后填入<a href="https://tunnelbroker.net/tunnel_detail.php" target="_blank" rel="noopener">https://tunnelbroker.net/tunnel_detail.php</a>中的红框部位即可。<br>网上教程很多，我这里就暂时不写了<br><img src="https://upload-images.jianshu.io/upload_images/10763120-f3eaa33daa6e067e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt></p>
+<p> 其中HE公司提供的免费ddns和freenom提供的免费顶级域名方法请参照下面koolshare的这篇文章<br><a href="https://koolshare.cn/forum.php?mod=viewthread&tid=98193&extra=page%3D1%26filter%3Dtypeid%26typeid%3D107" target="_blank" rel="noopener">https://koolshare.cn/forum.php?mod=viewthread&amp;tid=98193&amp;extra=page%3D1%26filter%3Dtypeid%26typeid%3D107</a><br>—————————END————————————</p>
 
       
 
@@ -185,7 +244,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/07/16/实验文章/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/02/10/ipv6/">展开全文 >></a>
         </p>
       
 
@@ -300,7 +359,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 John Doe
+    		&copy; 2020 Lievent
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
